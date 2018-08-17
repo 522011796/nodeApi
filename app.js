@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -17,6 +18,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+    secret:'ricky',
+    cookie:{maxAge:3600000 * 24 * 30},
+    resave:false,
+    saveUninitialized:false
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 var index = require('./routes/index');
@@ -27,6 +34,8 @@ var music = require('./routes/music');
 var art = require('./routes/art');
 var updateData = require('./routes/updateData');
 var addData = require('./routes/addData');
+var login = require('./routes/login');
+var sessionInfo = require('./routes/sessionInfo');
 app.use('/', index);
 app.use('/users', users);
 app.use('/artical', artical);
@@ -35,6 +44,8 @@ app.use('/art', art);
 app.use('/music', music);
 app.use('/updateData', updateData);
 app.use('/addData', addData);
+app.use('/login', login);
+app.use('/sessionInfo', sessionInfo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
