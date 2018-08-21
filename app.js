@@ -36,6 +36,11 @@ var updateData = require('./routes/updateData');
 var addData = require('./routes/addData');
 var login = require('./routes/login');
 var sessionInfo = require('./routes/sessionInfo');
+//vueblog
+var articalVue = require('./routes/vueBlog/artical');
+var imgArticle = require('./routes/vueBlog/imgArticle');
+var imgWall = require('./routes/vueBlog/imgWall');
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/artical', artical);
@@ -46,6 +51,10 @@ app.use('/updateData', updateData);
 app.use('/addData', addData);
 app.use('/login', login);
 app.use('/sessionInfo', sessionInfo);
+//vueblog
+app.use('/articalVue', articalVue);
+app.use('/imgArticle', imgArticle);
+app.use('/imgWall', imgWall);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

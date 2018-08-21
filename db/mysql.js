@@ -5,7 +5,7 @@ var pool  = {
     host            : 'localhost',
     user            : 'root',
     password        : 'likai123',
-    database        : 'blog'
+    database        : 'vueblog'
 };
 
 module.exports = {
