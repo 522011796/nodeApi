@@ -35,6 +35,7 @@ var art = require('./routes/art');
 var updateData = require('./routes/updateData');
 var addData = require('./routes/addData');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var sessionInfo = require('./routes/sessionInfo');
 //vueblog
 var articalVue = require('./routes/vueBlog/artical');
@@ -50,6 +51,7 @@ app.use('/music', music);
 app.use('/updateData', updateData);
 app.use('/addData', addData);
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/sessionInfo', sessionInfo);
 //vueblog
 app.use('/articalVue', articalVue);

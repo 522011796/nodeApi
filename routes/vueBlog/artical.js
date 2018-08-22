@@ -42,6 +42,24 @@ router.post('/delete', function(req, res, next) {
     });
 });
 
+router.post('/update', function(req, res, next) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var content = req.body.content;
+    var sendTime = moment().format('YYYY-MM-DD hh:mm:ss');
+    var type = req.body.type;
+    var tags = req.body.tags;
+    var classType = req.body.classType;
+    console.log(title,content,sendTime,type,tags,classType,id);
+    db.query('update article set title=?,content=?,sendTime=?,type=?,tags=?,class=? where id = ?', [title,content,sendTime,type,tags,classType,id],function(results,fields){
+        if(results.code == 500){
+            res.json(results);
+        }else{
+            res.json({code:200,data:results});
+        }
+    });
+});
+
 router.get('/detail', function(req, res, next) {
     var id = req.query.id;
     db.query('select * from article where id = ?', [id],function(results,fields){
